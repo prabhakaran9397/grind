@@ -36,6 +36,23 @@ $ `sudo make uninstall`
 
 $ `./grind`
 
+### Testing
+
+Run
+
+$ `grind hello.c`
+
+$ `grind hello.cpp`
+
+$ `grind hello.java`
+
+$ `grind hello.py`
+
+$ `grind hello.rb`
+
+$ `grind hello.sh`
+
+
 <strong>Note</strong>: You must have compilers or interpreters installed for necessary language,
 
 this is to make us lazy! lol XP
