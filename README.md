@@ -24,7 +24,9 @@ Run
 
 $ `sudo make install`
 
-To remove `grind` and associated docs, run
+### Removing `grind`
+
+Run
 
 $ `sudo make uninstall`
 
