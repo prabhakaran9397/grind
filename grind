@@ -1,0 +1,31 @@
+#!/bin/bash
+
+filename=$1
+extension=${filename##*.}
+onlyfilename="${filename%.*}"
+
+if [[ $extension = "c" ]];
+then
+	gcc $filename
+	./a.out
+	rm ./a.out
+elif [[ $extension = "cpp" ]];
+then
+	g++ $filename
+	./a.out
+	rm ./a.out
+elif [[ $extension = "java" ]];
+then
+	javac $filename
+	java $onlyfilename
+	rm *.class
+elif [[ $extension = "py" ]];
+then
+	python $filename
+elif [[ $extension = "rb" ]];
+then
+	ruby $filename
+elif [[ $extension = "sh" ]];
+then
+	sh $filename
+fi
