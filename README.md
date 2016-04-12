@@ -52,6 +52,13 @@ $ `grind hello.rb`
 
 $ `grind hello.sh`
 
+## Feature
+
+To display compile time
+
+Run
+
+$ `grind -t <filename>`
 
 <strong>Note</strong>: You must have compilers or interpreters installed for necessary language,
 
