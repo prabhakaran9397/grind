@@ -1,31 +1,67 @@
 #!/bin/bash
 
-filename=$1
+if [[ ${1:0:1} = "-"  ]];
+then
+	filename=$2
+else
+	filename=$1
+fi
+
 extension=${filename##*.}
 onlyfilename="${filename%.*}"
 
 if [[ $extension = "c" ]];
 then
 	gcc $filename
-	./a.out
+	if [[ $1 = "-t" ]];
+	then
+		/usr/bin/time -f "\n$2 has taken %Es to execute" ./a.out
+	else
+		./a.out
+	fi
 	rm ./a.out
 elif [[ $extension = "cpp" ]];
 then
 	g++ $filename
-	./a.out
+        if [[ $1 = "-t" ]];
+        then
+                /usr/bin/time -f "\n$2 has taken %Es to execute" ./a.out
+	else
+		./a.out
+        fi
 	rm ./a.out
 elif [[ $extension = "java" ]];
 then
 	javac $filename
-	java $onlyfilename
+        if [[ $1 = "-t" ]];
+        then
+                /usr/bin/time -f "\n$2 has taken %Es to execute" java $onlyfilename
+	else
+		java $onlyfilename
+        fi
 	rm *.class
 elif [[ $extension = "py" ]];
 then
-	python $filename
+	if [[ $1 = "-t" ]];
+        then
+                /usr/bin/time -f "\n$2 has taken %Es to execute" python $filename
+        else
+                python $filename
+        fi
 elif [[ $extension = "rb" ]];
 then
-	ruby $filename
+        if [[ $1 = "-t" ]];
+        then
+                /usr/bin/time -f "\n$2 has taken %Es to execute" ruby $filename
+        else
+                ruby $filename
+        fi
 elif [[ $extension = "sh" ]];
 then
-	sh $filename
+        if [[ $1 = "-t" ]];
+        then
+                /usr/bin/time -f "\n$2 has taken %Es to execute" sh $filename
+        else
+                sh $filename
+        fi
 fi
